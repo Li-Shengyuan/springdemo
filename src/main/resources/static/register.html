@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+	<link rel="stylesheet" type="text/css" href="css/loginRegister.css"/>
+	<title>iBOOK-注册</title>
+</head>
+<body style="background-image: url(img/registerBkg.jpg); background-size: cover;" >
+	<form id="form1">
+		<p>
+			<input type="text" id="yhm" v-model="yhm" placeholder="用户名" @blur="checkYhm()"/>
+		</p>
+		<p>
+			<input type="password" id="pwd" v-model="pwd" placeholder="密码" @blur="checkPwd()"/>
+		</p>
+		<p>
+			<input type="password" id="pwd2" v-model="pwd2" placeholder="确认密码" @blur="checkPwd2()" />
+		</p>
+		<p>
+			<input type="button" value="注册" id="register" @click="doRegister()"/>
+		</p>
+		<p>
+			<a href="login.html" id="left">已有账号</a>
+			<span id="right">
+				<a href="index.html">网站首页</a>
+			</span>
+		</p>
+	</form>
+	<script src="js/common/vue.js"></script>
+	<script src="js/common/axios.min.js"></script>
+	<script src="js/register.js"></script>
+</body>

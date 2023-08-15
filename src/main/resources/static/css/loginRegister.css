@@ -1,0 +1,36 @@
+@import url("global.css");
+
+form{
+	width: 300px;
+	margin: 10% auto 0;
+	padding: 40px;
+	background-color: white;
+	border-radius: 3px;
+}
+
+input{
+	height: 40px;
+	width: 300px;
+	border: 1px solid lightgray;
+	margin: 10px 0;
+	border-radius: 3px;
+}
+
+input[type='button']{
+	font-size: 16px;
+	background-color: #0080EE;
+	cursor: pointer;
+}
+
+#left{
+	color:#FF8785;
+	font-size: 12px;
+}
+
+#right{
+	float: right;
+	font-size: 12px;
+}
+#right a{
+	color: gray;
+}

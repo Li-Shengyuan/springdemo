@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>账户维护</title>
+	<link rel="stylesheet" type="text/css" href="css/adminContent.css" />
+</head>
+<body>
+<!--contentPanel内容面板：1.search  2.space  3.content -->
+<div id="contentPanel">
+	<!--
+    	作者：1029243332@qq.com
+    	描述：查询条件
+    -->
+	<!-- 1.search -->
+	<div class="search">
+		<!-- 1.1. head -->
+		<div class="head">
+			<span><img src="img/search.ico"/> 查询条件</span>
+			<span class="showHide">
+				<img src="img/down.ico"/>
+			</span>
+		</div>
+		<!-- 1.2. body -->
+		<div class="body">
+			<form name="form1">
+				<table width="100%" cellspacing="0">
+					<tr>
+						<td>用户名</td>
+						<td><input v-model="yhm" placeholder="支持模糊查询"/></td>
+						<td>身份</td>
+						<td>
+							<select v-model="yhsf">
+								<option value="">请选择</option>
+								<option value="3">买家</option>
+								<option value="2">普通管理员</option>
+							</select>
+						</td>
+						<td>注册时间</td>
+						<td><input v-model="zcsj" type="number"/></td>
+					</tr>
+					<tr>
+						<td>手机号</td>
+						<td><input v-model="sjh" placeholder="支持模糊查询" type="number"/></td>
+						<td>性别</td>
+						<td>
+							<select v-model="sex">
+								<option value="">请选择</option>
+								<option value="男">男</option>
+								<option value="女">女</option>
+							</select>
+						</td>
+						<td>邮箱</td>
+						<td><input v-model="email"  placeholder="支持模糊查询"/></td>
+					</tr>
+					<tr>
+						<td colspan="6" id="btnPanel">
+							<input type="button" value="查询" @click="listUsers()"/>
+							<input type="button" value="清空" @click="clearData()"/>
+						</td>
+					</tr>
+				</table>
+			</form>
+		</div>
+	</div>
+	
+	<!-- 2.space -->
+	<div class="space"></div>
+	
+	<!--
+    	作者：1029243332@qq.com
+    	描述：查询结果
+    -->
+	<!-- 3.content -->
+	<div class="content">
+		<!-- 3.1. head -->
+		<div class="head">
+			<span><img src="img/table.ico"/> 查询结果</span>
+			<span onclick="location.reload()" class="refresh"><img src="img/refresh.ico"/></span>
+		</div>
+		<!-- 3.2. body -->
+		<div class="body" >
+			<table width="100%" cellspacing="0">
+				<tr>
+					<th style="width: 5%;">序号</th>
+					<th style="width: 10%;">用户名</th>
+					<th style="width: 10%;">昵称</th>
+					<th style="width: 5%;">身份</th>
+					<th style="width: 5%;">性别</th>
+					<th style="width: 10%;">头像</th>
+					<th style="width: 15%;">手机号</th>
+					<th style="width: 15%;">邮箱</th>
+					<th style="width: 10%;">注册时间</th>
+					<th style="width: 15%;">操作</th>
+				</tr>
+				<tr v-for="(user,i) in users">
+					<td>{{i+1}}</td>
+					<td>{{user.yhm}}</td>
+					<td>{{user.yhnc}}</td>
+					<td>{{user.yhsf}}</td>
+					<td>{{user.sex}}</td>
+					<td>{{user.yhtx}}</td>
+					<td>{{user.sjh}}</td>
+					<td>{{user.email}}</td>
+					<td>{{user.zcsj}}</td>
+					<td>
+						<a @click="doUpdate(user)">修改</a>&nbsp;
+						<a @click="doDelete(user.yhbh)">删除</a>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</div>
+<script src="../js/common/vue.js"></script>
+<script src="../js/common/axios.min.js"></script>
+<script src="js/userMgr.js"></script>
+</body>
+</html>

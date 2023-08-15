@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>头像上传</title>
+	<style>
+		input{border-radius:5px;background-color:#5BC0DE}
+		#pic{width:180px;}
+		#upload{width:100px;padding:2px 25px}
+		#upload:hover{cursor: pointer}
+		#showInfo{color:red}
+		#box{text-align:center;margin:auto}
+		#yhtx{width:300px;height:300px;border-radius:5px;border:solid 6px gray;}
+	</style>
+</head>
+<body>
+	<div id="panel">
+		<form enctype="multipart/form-data" name="form1">
+			<input type="file" name="yhtx" id="pic" accept="image/*" />
+			<input type="button" value="上 传" id="upload"/>
+		</form>
+		<div id="showInfo">&nbsp;</div>
+		<div id="box">
+			<img id="yhtx" src="img/admin.jpg" alt="个人头像" >
+			<p>个人头像</p>
+		</div>
+	</div>
+</body>
+<script src="../js/common/jquery-1.10.0.min.js"></script>
+<script src="../js/common/axios.min.js"></script>
+<script>
+window.onload = function(){
+	// 获取在【登录】时存放在 sessionStorage 中的信息
+	let userJson = sessionStorage.getItem("userJson");
+	let user = JSON.parse(userJson);
+	if(user != null && user.yhtx !='' && user.yhtx != null){
+		$("#yhtx").attr("src","/iBook/upload/"+user.yhtx);
+	}
+
+	<!-- 方式1：jQuery ajax -->
+	$("#upload").click(function(){
+		// Ajax 请求上传文件
+		$.ajax({
+			type:"POST",
+			url:"/iBook/pic/"+user.yhbh,
+			data:new FormData(form1),		// 提交数据
+			processData: false,  			// 告诉jQuery不要去处理发送的数据
+			contentType: false,   			// 告诉jQuery不要去设置Content-Type请求头
+			success:function(fileName){
+				if(fileName != null && fileName != ""){
+					// 上传成功，显示图片
+					$("#yhtx").attr("src","/iBook/upload/"+fileName);
+
+					// 更新 sessionStorage 中的用户头像
+					user.yhtx = fileName;
+					sessionStorage.setItem("userJson",JSON.stringify(user));
+
+					// 更新父窗口左上角的图像
+					let p = window.parent;	// 获取当前窗体（iframe）的父窗体（admin.html）
+					p.document.getElementById("yhtx").src = "/iBook/upload/"+fileName;
+				}else{
+					$("#showInfo").html("上传失败")
+				}
+			}
+		});
+	});
+
+	<!-- 方式2：axios ajax-->
+	/*document.getElementById("upload").onclick = function(){
+		// Ajax 请求上传文件
+		let url = "/iBook/file?yhbh="+user.yhbh
+		let formData = new FormData(form1);
+		axios.post(url,formData).then(res => {
+			let fileName = res.data;
+
+			if(fileName != null && fileName != ""){
+				// 上传成功，显示图片
+				$("#yhtx").attr("src","/iBook/upload/"+fileName);
+			}else{
+				$("#showInfo").html("上传失败")
+			}
+		});
+	}*/
+}
+</script>
+</html>

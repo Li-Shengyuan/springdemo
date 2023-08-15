@@ -1,0 +1,102 @@
+@import url(global.css);
+
+body{
+	background-color: #F9F9F9;
+}
+
+#header{
+	background-color: black;
+	font-size: 15px;
+}
+#header>div{
+	width: 1200px;
+	padding: 10px 0;
+	margin: auto;
+	color: lightgray;
+}
+#header a{
+	color: lightgray;
+}
+#left:hover{
+	color: blue;
+}
+#right a:hover{
+	color:blue;
+}
+
+#main{
+	width: 1200px;
+	margin: auto;	/*居于父容器中间*/
+}
+#m1 > span > a{
+	background-color: #00D7FF;
+	width: 50px;
+	display: inline-block;
+	border-radius: 10px;	/** 圆角边框 */
+	padding-bottom: 3px;
+	text-indent: 8px;
+	color: white;
+}
+#m1 > span > a:hover{
+	color: blue;
+}
+#m1 > span > a:nth-child(1){
+	background-color: red;
+}
+
+#m2{
+	height: 500px;
+}
+#m2 img{
+	width: 400px;
+	height: 500px;
+	float: left;
+}
+
+.type .title{
+	padding: 20px 0;
+}
+
+.title span{
+	font-size: 30px;
+}
+.title a{
+	float: right;
+	font-size: 15px;
+	color: black;
+}
+.title a:hover{
+	color: red;
+}
+
+.content td>a{
+	width: 99%;
+	height: 350px;
+	background-color: white;
+	display: inline-block;
+	border-radius: 10px;
+	margin: 5px 0;
+}
+
+.content td > a:hover{
+	opacity: 0.8;		/* 透明效果，取值 0~1，0全透明，1不透明 */
+	color: red;
+}
+
+.content td> a > img{
+	width: 200px;
+	height: 250px;
+	padding: 20px;
+}
+
+.content td> a > img ~ div{
+	text-align: center;
+}
+
+#footer{
+	padding: 10px;
+	background-color: black;
+	color: gray;
+	text-align: center;
+	font-size: 15px;
+}

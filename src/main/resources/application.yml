@@ -1,0 +1,30 @@
+server:
+  port: 8080
+  servlet:
+    context-path: "/iBook"
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/eshop?characterEncoding=utf8&allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC&rewriteBatchedStatements=true
+    username: root
+    password: root
+  mvc:
+    hiddenmethod:
+      filter:
+        enabled: true
+  servlet:
+    multipart:
+      location: c:/upload
+      max-file-size: 5MB
+      max-request-size: 20MB
+
+project:
+  file:
+    access-path: /upload/**
+
+mybatis-plus:
+  mapper-locations: classpath*:com/lsy/ibook/dao/*.xml
+  type-aliases-package: com.lsy.ibook.bean
+  configuration:
+    log-impl: org.apache.ibatis.logging.log4j.Log4jImpl

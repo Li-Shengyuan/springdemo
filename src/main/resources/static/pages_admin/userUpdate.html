@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>修改用户</title>
+	<link rel="stylesheet" type="text/css" href="css/adminContent.css" />
+</head>
+<body>
+	<div class="body" id="panel">
+		<form name="form1">
+			<table width="100%" cellspacing="0">
+				<tr><td colspan="2" style="text-align: center;color: red;" v-html="tipMsg"></td></tr>
+				<tr>
+					<td style="width:46%">用户名</td>
+					<td><input v-model="yhm" disabled/></td>
+				</tr>
+				<tr>
+					<td>身份标识</td>
+					<td>
+						<select v-model="yhsf">
+							<option value="3">买家</option>
+							<option value="2">普通管理员</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" id="btnPanel">
+						<input type="button" value="保存" @click="doAdd()"/>
+						<input type="button" value="返回" @click="goBack()"/>
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
+</body>
+<script src="../js/common/vue.js"></script>
+<script src="../js/common/axios.min.js"></script>
+<script src="js/userUpdate.js"></script>
+</html>
